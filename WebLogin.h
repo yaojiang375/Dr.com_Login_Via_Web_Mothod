@@ -1,4 +1,4 @@
-
+﻿
 int nosign(int a,int b)//无符号右移
 {
     if(b >= sizeof(a)*8)
@@ -148,7 +148,7 @@ QString hex_tab="0123456789abcdef";
 QString str="";
 for( int i=0; i < binarray.length() * 4; i++){
     str+=(QString)(hex_tab[(int)(((binarray[i>>2]) >>((i%4)*8+4))&0xF)])+
-            (QString)(hex_tab[(int)(((binarray[i>>2])>>((i%4)*8))&0xF)]);//&&能找到吗？
+            (QString)(hex_tab[(int)(((binarray[i>>2])>>((i%4)*8))&0xF)]);
 
 }
 return str;}
@@ -158,13 +158,13 @@ QString binl2b64(QString binarray){
 QString tab="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 QString str="";
         for( int i=0; i < binarray.length() * 32; i+=6){
-str+=(QString)(tab[(((short int)(binarray[i>>5]).unicode () <<(i%32))&0x3F)|(((short  int)(binarray[i>>5+1]).unicode () >>(32-i%32))&0x3F)]);//&&是不是该加个toAnscii？
+str+=(QString)(tab[(((short int)(binarray[i>>5]).unicode () <<(i%32))&0x3F)|(((short  int)(binarray[i>>5+1]).unicode () >>(32-i%32))&0x3F)]);
 }
 return str;}
 
 QList<int> str2binl(QString str){
 int nblk=((str.length()+8)>>6)+1;
-int blks[nblk * 16];//&&能否编译通过？
+int blks[nblk * 16];
 for( int i=0; i < nblk * 16; i++){ blks[i]=0;}
 for( int i=0; i < str.length(); i++)
 {
